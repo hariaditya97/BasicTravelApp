@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+// ----------------------Variables--------------------------------------------
+
+String country0title = "Iceland";
+String country1title = "Ireland";
+String country2title = "Switzerland";
+String country3title = "Italy";
+String country4title = "France";
+String country5title = "Japan";
+String country6title = "Thailand";
+String country7title = "USA";
+
+int randnumber = 5;
+String finaltitle = "Japan";
+String finaldescription = country5description;
+
+String country0description =
+    "Home to the Vikings, Iceland is a Nordic island nation, defined by its dramatic landscape with volcanoes, geysers, hot springs and lava fields";
+String country1description =
+    "Ireland is an island nation on the westernmost edge of Europe. Famous for its breweries such as Guinness and Smithwicks along with the Celtic cross";
+String country2description =
+    "A mountainous Central European country, and home to numerous lakes, villages and the high peaks of the Alps, Swiss watches and chocolate are world renowned";
+String country3description =
+    "A European country with a long Mediterranean coastline, Italy has left a powerful mark on Western culture and cuisine. Famous for it's landmark art and ancient ruins";
+String country4description =
+    "France encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums and monuments";
+String country5description =
+    "Japan is an archipelago, or string of islands, on the eastern edge of Asia. The country has a legacy of distinctive gardens, sculpture and poetry";
+String country6description =
+    "Located in southern Asia, Thailand is known for great eats, martial arts, beaches, and many temples. Thailand also has many islands that have numerous resorts for tourists.";
+String country7description =
+    "The United States of America is the world's most dominant economic and military power. Its cultural imprint spans the world, led in large part by its popular culture expressed in music, movies and television.";
+
+// ------------------------------------------------------------------
+
+void main() {
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xff121421), //0xff2a2c42
+        appBar: AppBar(
+          //leading: Icon(Icons.flight_takeoff),
+          shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(10.0)),
+          elevation: 5.0,
+          brightness: Brightness.dark,
+          backgroundColor: Color(0xff121421), //0xff121421
+        ),
+        body: CountryDescription(),
+      ),
+    ),
+  );
+}
+
+class CountryDescription extends StatefulWidget {
+  @override
+  _CountryDescriptionState createState() => _CountryDescriptionState();
+}
+
+class _CountryDescriptionState extends State<CountryDescription> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Center(
+            child: Text(
+              finaltitle,
+              style: TextStyle(
+                  fontFamily: 'EczarSemiBold',
+                  fontSize: 40,
+                  color: Colors.white),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(10, 0, 10, 30),
+            child: Image.asset('images/Country$randnumber.jpg'),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(5, 5, 90, 30),
+            color: Color(0xff2a2c42),
+            padding: EdgeInsets.fromLTRB(20, 28, 40, 30),
+            child: Text(
+              finaldescription,
+              style: TextStyle(
+                  fontFamily: 'Ubuntu', fontSize: 20, color: Colors.white),
+            ),
+          ),
+          Container(
+            //color: Colors.white,
+            child: Center(
+              child: FlatButton(
+                onPressed: () {
+                  setState(() {
+                    print("Button Pressed!");
+                    randnumber = Random().nextInt(7);
+                    if (randnumber == 0) {
+                      finaltitle = country0title;
+                      finaldescription = country0description;
+                    } else if (randnumber == 1) {
+                      finaltitle = country1title;
+                      finaldescription = country1description;
+                    } else if (randnumber == 2) {
+                      finaltitle = country2title;
+                      finaldescription = country2description;
+                    } else if (randnumber == 3) {
+                      finaltitle = country3title;
+                      finaldescription = country3description;
+                    } else if (randnumber == 4) {
+                      finaltitle = country4title;
+                      finaldescription = country4description;
+                    } else if (randnumber == 5) {
+                      finaltitle = country5title;
+                      finaldescription = country5description;
+                    } else if (randnumber == 6) {
+                      finaltitle = country6title;
+                      finaldescription = country6description;
+                    } else {
+                      finaltitle = country7title;
+                      finaldescription = country7description;
+                    }
+                  });
+                },
+                child: Icon(
+                  Icons.flight_takeoff,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
